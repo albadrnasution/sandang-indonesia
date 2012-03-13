@@ -1,0 +1,141 @@
+Due : 8 March - 
+List Page :
+Alur : customer -> home -> category -> detil -> buy ->  |->view cart (check out) -> Thanks Page
+					|-> detil							|->view cart (check out)
+					|->login		|					|->view cart (check out) (filled customer info)
+					|->register		|					|->view cart (check out)
+									|->customer panel (suspend)
+										|-> Edit Info
+										|-> History
+										
+					|->search (suspend) -> search result (suspend)
+					|->privacy policy
+					|->about us
+					|->terms and conditions
+					|->sitemmap
+					|->contact us
+									
+									
+									
+==Customer== 
+A1.home :
+	controller :
+		Handler Page (load view, passing data : products, category, cart, customer)
+	model :
+		Default Model
+	view : 
+		header -> home, login, register, cart image : total price + item, name(if login/user), check out button
+		list product (newest/best sellers)
+		list category(only list)
+		search
+		footer -> privacy policy, about us, terms and conditions, sitemap, contact us , contact : ym contact, twitter, facebook
+
+====
+A2.view category :
+	controller :
+		Handler Page(load view, passing data : product , category, cart, customer)
+	model :
+		Default Model
+	view : 
+		header -> same
+		Image product, shop, info, price
+		footer -> same
+
+A3.detail product 
+	controller :
+		Handler Page(load view, passing data)
+	model :
+		Default Model
+	view : 
+		header -> same
+		product name, deskription, price, shop, buy button, product category
+		text field : quantity
+		sub -> list few products in same category.
+		footer -> same
+
+======
+A4.register customer
+	controller :
+		Handler Page(load view, passing data)
+		Action for registeration
+	model :
+		Default Model
+	view : 
+		header -> same
+		field on page : email, password, re-type password, first_name, last_name, address, phone
+		register button
+		footer -> same
+	Feedback View : 
+		header -> same
+		Show Registeration Succesfull then redirected to home
+		footer -> same
+
+A5.login customer
+	controller :
+		Handler Page(Load view, passing data)
+		Action for login
+	model :
+		Default Model
+	view : 
+		header -> same
+		field on page : email, password
+		login button
+		footer -> same
+	Feedback View : Redirected to home
+
+======	
+A6.view checkout
+	controller :
+		Handler Page(Load view, passing data)
+		Action for delete cart item
+		Action for save shipping
+		Load thank page
+	model :
+		Default Model
+	view :
+		header -> same
+		info shipping(first_name, last_name, address, email), list cart (name product, quantity, subtotal), total price
+		delete for each item, edit button for info shipping
+		footer -> same
+		thank page :
+			-> resume cart :
+				customer info + order info
+	Feedback view : delete -> redirected to view checkout
+					ok -> thank page
+
+					
+==Login customer==
+B1.customer panel* :
+	controller :
+		 Handler Page(Load Page, passing data)
+	model :
+		Default Model
+	view :
+		header->same
+		info customer : email, first_name, last_name, address, phone,
+		edit button
+		cart history
+		footer->same
+
+B2.customer edit info* :
+	controller :
+		Handler Page(load Page, passing data)
+		action change password
+		action change info
+	model :
+		Default model
+	view :
+		header -> same
+		field on page : email, first_name, last_name, address, phone, ok button
+		change password : old password, new password, re-type new password, ok button
+	Feedback view : redirecter to customer panel
+
+======
+B3.static page :
+	controller :
+		handler each static page
+	model : 
+	view :
+		header->same
+		view : about us, term and reference, dll
+		footer
